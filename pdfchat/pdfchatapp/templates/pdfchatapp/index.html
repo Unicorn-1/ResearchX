@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with multiple PDFs</title>
+</head>
+<body>
+    <h1>Chat with multiple PDFs :books:</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        {% if chat_history %}
+            {% for message in chat_history %}
+                <p>{{ message.content }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
